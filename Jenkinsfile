@@ -11,11 +11,7 @@ stages{
         stage('Build'){
             steps {
                 sh 'cat pom.xml'
-                script {
-                                def myFile = new File("test.txt") 
-                                fileText = "hello world"
-                                myFile.write(fileText)
-                    }    
+                def var1 = 100
                 cat test.txt
                 sh 'mvn clean package'
             }

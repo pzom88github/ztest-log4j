@@ -15,7 +15,7 @@ stages{
         stage('Build'){
             steps {
                 sh 'cat pom.xml'
-                sh "sed -e 's/empty/staging/g' src/main/app/log4j.xml"
+                sh 'sed -e "s/empty/staging/g" src/main/app/log4j.xml'
                 sh 'mvn clean package'
             }
             post {

@@ -19,6 +19,9 @@ stages{
                  def versionList = pom.version.replace("-SNAPSHOT", "").tokenize(".")
                  def newRelease = Eval.me(versionList[2])+1
                  def version = "${versionList[0]}.${versionList[1]}.${versionList[2]}"
+                 def artifactId = pom.artifactId
+                 echo "artifact id " 
+                 echo artifactId
                 }
         }
     }

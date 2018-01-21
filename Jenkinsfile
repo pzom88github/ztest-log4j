@@ -32,7 +32,7 @@ stages{
                     cat src/main/app/log4j.xml
                     """)
                 echo "ARTIFACT ID"
-                echo $artifactId
+                echo ${artifactId}
                 sh 'mvn clean package'
             }
             post {

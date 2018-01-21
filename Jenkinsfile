@@ -7,15 +7,16 @@ line {
          string(name: 'tomcat_prod', defaultValue: '34.209.233.6', description: 'Production Server')
     }
 
-    triggers {
-         pollSCM('* * * * *')
-     }
-
 stages{
         stage('Build'){
             steps {
                 sh 'cat pom.xml'
-                def myFile = new File("test.txt") 
+                script {
+                                def myFile = new File("test.txt") 
+                                fileText = "hello world"
+                                myFile.write(fileText)
+                    }    
+                cat test.txt
                 sh 'mvn clean package'
             }
             post {

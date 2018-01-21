@@ -11,18 +11,23 @@ pipeline {
      }
 
 stages{
-        stage('Build'){
-            steps {
-                sh("""
-                    sed -i -e "s/\\/extra\\/empty\\.properties/\\/extra\\/stage\\.properties/g" src/main/app/log4j.xml
-                    cat src/main/app/log4j.xml
-                    """)
-                script {
+    stage('PreBuild') {
+        steps {
+            echo 'Getting information for pom file'
+            script {
                  def pom = readMavenPom file: 'pom.xml'
                  def versionList = pom.version.replace("-SNAPSHOT", "").tokenize(".")
                  def newRelease = Eval.me(versionList[2])+1
                  def version = "${versionList[0]}.${versionList[1]}.${versionList[2]}"
                 }
+        }
+    }
+      stage('Build'){
+            steps {
+                sh("""
+                    sed -i -e "s/\\/extra\\/empty\\.properties/\\/extra\\/stage\\.properties/g" src/main/app/log4j.xml
+                    cat src/main/app/log4j.xml
+                    """)
                 sh 'mvn clean package'
             }
             post {

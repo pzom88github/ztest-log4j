@@ -23,6 +23,7 @@ stages{
                  echo "artifact id " 
                  echo artifactId
                 env.AID="${artifactId}"
+                env.FOR_STAGE_VERSION="${versionList}"
                 }
         }
     }
@@ -34,7 +35,7 @@ stages{
                     """)
                 echo "ARTIFACT ID"
                 echo env.AID
-                sh 'mvn clean package'
+                sh 'mvn clean package versions:set -DnewVersion=STAGE${FOR_STAGE_VERSION}'
                 //echo "xxxx ${artifactId}"  -- will not work
             }
             post {

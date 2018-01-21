@@ -22,6 +22,7 @@ stages{
                  def artifactId = pom.artifactId
                  echo "artifact id " 
                  echo artifactId
+                env.AID=${artifactId}
                 }
         }
     }
@@ -32,7 +33,7 @@ stages{
                     cat src/main/app/log4j.xml
                     """)
                 echo "ARTIFACT ID"
-                echo ${artifactId}
+                echo env.AID
                 sh 'mvn clean package'
             }
             post {

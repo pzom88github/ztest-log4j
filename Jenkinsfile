@@ -23,7 +23,7 @@ stages{
                  echo "artifact id " 
                  echo artifactId
                 env.AID="${artifactId}"
-                env.FOR_STAGE_VERSION="${versionList}"
+                env.FOR_STAGE_VERSION="${version}"
                 }
         }
     }

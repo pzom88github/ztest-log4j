@@ -12,6 +12,7 @@ pipeline {
 
 stages{
     stage('PreBuild') {
+        cleanWs()
         steps {
             echo 'Getting information for pom file'
             script {
@@ -35,7 +36,8 @@ stages{
                     """)
                 echo "ARTIFACT ID"
                 echo env.AID
-                sh 'mvn clean package versions:set -DnewVersion=STAGE${FOR_STAGE_VERSION}'
+                sh 'mvn clean versions:set -DnewVersion=STAGE-${FOR_STAGE_VERSION}'
+                sh 'mvn clean package'
                 //echo "xxxx ${artifactId}"  -- will not work
             }
             post {

@@ -12,7 +12,6 @@ stages{
             steps {
                 sh 'cat pom.xml'
                 def var1 = 100
-                cat test.txt
                 sh 'mvn clean package'
             }
             post {

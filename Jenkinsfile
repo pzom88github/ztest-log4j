@@ -11,7 +11,6 @@ stages{
         stage('Build'){
             steps {
                 sh 'cat pom.xml'
-                def var1 = 100
                 sh 'mvn clean package'
             }
             post {

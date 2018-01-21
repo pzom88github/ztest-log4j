@@ -16,9 +16,6 @@ stages{
             steps {
                 sh 'cat pom.xml'
                 def myFile = new File("test.txt") 
-                def fileText = src/main/app/log4j.xml
-                fileText = (fileText =~ /empty/).replaceFirst("staging")
-                myFile.write(fileText)
                 sh 'mvn clean package'
             }
             post {

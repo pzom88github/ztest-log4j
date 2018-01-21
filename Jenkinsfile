@@ -15,7 +15,7 @@ stages{
         stage('Build'){
             steps {
                 sh 'cat pom.xml'
-                bat(/sed -e 's/empty/staging/g' src/main/app/log4j.xml/)
+                C:\\cygwin64\\bin\\sed -l -e 's/empty/staging/g' src/main/app/log4j.xml 
                 sh 'mvn clean package'
             }
             post {

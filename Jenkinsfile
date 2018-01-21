@@ -14,7 +14,7 @@ stages{
         stage('Build'){
             steps {
                 sh("""
-                    sed -e 's/\/extra\/empty\.properties/\/extra\/stage\.properties/g' src/main/app/log4j.xml
+                    sed -e "s/\/extra\/empty\.properties/\/extra\/stage\.properties/g" src/main/app/log4j.xml
                     """)
                 sh 'mvn clean package'
             }

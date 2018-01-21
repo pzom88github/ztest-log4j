@@ -31,6 +31,8 @@ stages{
                     sed -i -e "s/\\/extra\\/empty\\.properties/\\/extra\\/stage\\.properties/g" src/main/app/log4j.xml
                     cat src/main/app/log4j.xml
                     """)
+                echo "ARTIFACT ID"
+                echo artifactId
                 sh 'mvn clean package'
             }
             post {

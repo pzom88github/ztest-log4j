@@ -13,6 +13,9 @@ pipeline {
 stages{
         stage('Build'){
             steps {
+                sh("""
+                    sed "s/enpty/stage/g" src/main/app/log4j.xml
+                    """)
                 sh 'mvn clean package'
             }
             post {

@@ -1,0 +1,30 @@
+#%RAML 0.8
+baseUri: https://mocksvc.mulesoft.com/mocks/5e05b0f7-d732-4038-9ea3-6f6e334524e8
+title: Product - POS Integration Experience
+version: 1.0 Dev
+
+/test:
+  post:
+#    headers:
+#      eai: 
+#        displayName: Record descriptor
+#        description: Record descriptor
+#        type: string
+  
+    body: 
+      application/json:
+        example: |
+            { "message": "post" }    
+          
+    responses: 
+      201:
+        body:
+          application/json:
+            example: |
+              { "message" : "success"}
+      422:
+        body:
+          application/json:
+            example: |
+              { "message" : "Missing required element(s)"}
+        

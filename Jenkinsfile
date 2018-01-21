@@ -12,8 +12,8 @@ pipeline {
 
 stages{
     stage('PreBuild') {
-        cleanWs()
         steps {
+            cleanWs()
             echo 'Getting information for pom file'
             script {
                  def pom = readMavenPom file: 'pom.xml'

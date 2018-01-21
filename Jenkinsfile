@@ -22,7 +22,7 @@ stages{
                  def artifactId = pom.artifactId
                  echo "artifact id " 
                  echo artifactId
-                env.AID=${artifactId}
+                env.AID="${artifactId}"
                 }
         }
     }

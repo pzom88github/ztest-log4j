@@ -15,7 +15,10 @@ stages{
         stage('Build'){
             steps {
                 sh 'cat pom.xml'
-                bat(/C:\cygwin64\bin\sed -l -e 's/empty/staging/g' src/main/app/log4j.xml/) 
+                def myFile = new File("test.txt") 
+                def fileText = src/main/app/log4j.xml
+                fileText = (fileText =~ /empty/).replaceFirst("staging")
+                myFile.write(fileText)
                 sh 'mvn clean package'
             }
             post {

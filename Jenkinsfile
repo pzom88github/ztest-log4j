@@ -35,6 +35,7 @@ stages{
                 echo "ARTIFACT ID"
                 echo env.AID
                 sh 'mvn clean package'
+                echo "xxxx ${artifactId}"
             }
             post {
                 success {
